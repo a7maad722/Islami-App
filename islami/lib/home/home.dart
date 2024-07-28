@@ -1,9 +1,13 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:islami/home/tabs/ahadeth.dart';
 import 'package:islami/home/tabs/quran.dart';
 import 'package:islami/home/tabs/radio.dart';
 import 'package:islami/home/tabs/sebha.dart';
 import 'package:islami/home/tabs/settings.dart';
+import 'package:islami/providers/my_provider.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = "Home";
@@ -18,13 +22,13 @@ class _HomeScreenState extends State<HomeScreen> {
   int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    var width = size.width;
+    var provider = Provider.of<MyProvider>(context);
     return Stack(
       children: [
         Image.asset(
-          'assets/images/default_bg.png',
-          width: width,
+          provider.appTheme == ThemeMode.light
+              ? 'assets/images/default_bg.png'
+              : 'assets/images/dark_bg.png',
         ),
         Scaffold(
           appBar: AppBar(
