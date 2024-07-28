@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class MyThemes {
   static Color AppPrimaryColor = const Color(0xffB7935F);
+  static Color AppDarkPrimaryColor = const Color(0xffFACC1D);
   static ThemeData lightTheme = ThemeData(
     scaffoldBackgroundColor: Colors.transparent,
     appBarTheme: AppBarTheme(
@@ -74,10 +75,10 @@ class MyThemes {
     ),
     dividerTheme: DividerThemeData(
       thickness: 2,
-      color: Color(0xffFACC1D),
+      color: AppDarkPrimaryColor,
     ),
     iconTheme: IconThemeData(
-      color: Color(0xffFACC1D),
+      color: AppDarkPrimaryColor,
     ),
     textTheme: TextTheme(
       bodyLarge: GoogleFonts.elMessiri(

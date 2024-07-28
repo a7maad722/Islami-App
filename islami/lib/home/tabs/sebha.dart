@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:islami/providers/my_provider.dart';
+import 'package:islami/themes/my_themes.dart';
+import 'package:provider/provider.dart';
 
 class sebhaTab extends StatefulWidget {
   sebhaTab({super.key});
@@ -21,6 +24,7 @@ class _sebhaTabState extends State<sebhaTab> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<MyProvider>(context);
     return Center(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -30,14 +34,18 @@ class _sebhaTabState extends State<sebhaTab> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(left: 40),
-                child: Image.asset('assets/images/head_sebha_logo.png'),
+                child: provider.appTheme == ThemeMode.light
+                    ? Image.asset('assets/images/head_sebha_logo.png')
+                    : Image.asset('assets/images/head_sebha_dark.png'),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 77),
                 child: Transform.rotate(
                   angle: angle,
                   child: GestureDetector(
-                    child: Image.asset('assets/images/body_sebha_logo.png'),
+                    child: provider.appTheme == ThemeMode.light
+                        ? Image.asset('assets/images/body_sebha_logo.png')
+                        : Image.asset('assets/images/body_sebha_dark.png'),
                     onTap: onClicked,
                   ),
                 ),
@@ -57,7 +65,9 @@ class _sebhaTabState extends State<sebhaTab> {
           ),
           Container(
             decoration: BoxDecoration(
-                color: Color(0xffB7935F),
+                color: provider.appTheme == ThemeMode.light
+                    ? MyThemes.AppPrimaryColor
+                    : MyThemes.AppDarkPrimaryColor,
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.circular(25)),
             width: 69,
@@ -76,7 +86,9 @@ class _sebhaTabState extends State<sebhaTab> {
           Container(
             margin: EdgeInsets.only(top: 27),
             decoration: BoxDecoration(
-                color: Color(0xffB7935F),
+                color: provider.appTheme == ThemeMode.light
+                    ? MyThemes.AppPrimaryColor
+                    : MyThemes.AppDarkPrimaryColor,
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.circular(25)),
             width: 137,
