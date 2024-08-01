@@ -1,6 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:islami/providers/my_provider.dart';
-import 'package:islami/themes/my_themes.dart';
+// import 'package:islami/themes/my_themes.dart';
 import 'package:provider/provider.dart';
 
 class ThemeBottomSheet extends StatelessWidget {
@@ -16,8 +17,8 @@ class ThemeBottomSheet extends StatelessWidget {
               ? Color(0xffB7935F)
               : Color(0xff141A2E),
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30),
-            topRight: Radius.circular(30),
+            topLeft: Radius.circular(25),
+            topRight: Radius.circular(25),
           )),
       child: Column(
         children: [
@@ -35,17 +36,19 @@ class ThemeBottomSheet extends StatelessWidget {
                     provider.changeTheme(ThemeMode.light);
                   },
                   child: Text(
-                    'Light',
+                    'ligth'.tr(),
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: Colors.white,
                         ),
                   ),
                 ),
-                Icon(
-                  Icons.done_rounded,
-                  size: 30,
-                  color: Colors.white,
-                )
+                provider.appTheme == ThemeMode.light
+                    ? Icon(
+                        Icons.done_rounded,
+                        size: 30,
+                        color: Colors.white,
+                      )
+                    : SizedBox(),
               ],
             ),
           ),
@@ -59,17 +62,19 @@ class ThemeBottomSheet extends StatelessWidget {
                     provider.changeTheme(ThemeMode.dark);
                   },
                   child: Text(
-                    'Dark',
+                    'dark'.tr(),
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: Colors.white,
                         ),
                   ),
                 ),
-                Icon(
-                  Icons.done_rounded,
-                  size: 30,
-                  color: Colors.white,
-                )
+                provider.appTheme == ThemeMode.dark
+                    ? Icon(
+                        Icons.done_rounded,
+                        size: 30,
+                        color: Colors.white,
+                      )
+                    : SizedBox(),
               ],
             ),
           ),

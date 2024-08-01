@@ -18,12 +18,12 @@ class SuraDetails extends StatelessWidget {
     var ThemeProvider = Provider.of<MyProvider>(context);
 
     return ChangeNotifierProvider(
-      create: (context) => SuraDetailsProvider(),
+      create: (context) => SuraDetailsProvider()..loadFileSura(model.index),
       builder: (context, child) {
         var provider = Provider.of<SuraDetailsProvider>(context);
-        if (provider.verses.isEmpty) {
-          provider.loadFileSura(model.index);
-        }
+        // if (provider.verses.isEmpty) {
+        //   provider.loadFileSura(model.index);
+        // }
         return Container(
           decoration: BoxDecoration(
               color: Colors.transparent,

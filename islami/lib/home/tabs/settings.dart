@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:islami/bottom_sheets/language_bottom_sheet.dart';
 import 'package:islami/bottom_sheets/theme_bottom_sheet.dart';
@@ -17,7 +18,7 @@ class settingsTab extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
-            'Theme',
+            'theme'.tr(),
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   fontSize: 33,
                 ),
@@ -47,7 +48,9 @@ class settingsTab extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(
-                  'Light',
+                  provider.appTheme == ThemeMode.light
+                      ? 'ligth'.tr()
+                      : 'dark'.tr(),
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ),
@@ -57,7 +60,7 @@ class settingsTab extends StatelessWidget {
             height: 15,
           ),
           Text(
-            'Language',
+            'language'.tr(),
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   fontSize: 33,
                 ),
@@ -87,7 +90,9 @@ class settingsTab extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(
-                  'English',
+                  context.locale == Locale("en")
+                      ? 'english'.tr()
+                      : 'arabic'.tr(),
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:islami/Screens/suraDetails.dart';
 import 'package:islami/models/suramodel.dart';
@@ -132,7 +133,7 @@ class QuranTab extends StatelessWidget {
         ),
         Divider(),
         Text(
-          'Sura Name',
+          'suraName'.tr(),
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.bodyLarge,
         ),
@@ -171,89 +172,3 @@ class QuranTab extends StatelessWidget {
     );
   }
 }
-
-// class DataTableExample extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return SingleChildScrollView(
-//       scrollDirection: Axis.horizontal,
-//       child: ConstrainedBox(
-//         constraints:
-//             BoxConstraints(minWidth: MediaQuery.of(context).size.width),
-//         child: DataTable(
-//           border: TableBorder(
-//               verticalInside: BorderSide(
-//                   color: Color(0xffB7935F), style: BorderStyle.solid),
-//               top: BorderSide(color: Color(0xffB7935F)),
-//               horizontalInside: BorderSide(
-//                 color: Color(0xffB7935F),
-//               )),
-//           columns: const <DataColumn>[
-//             DataColumn(
-//               label: Text(
-//                 'اسم السورة',
-//                 style: TextStyle(fontStyle: FontStyle.italic),
-//               ),
-//             ),
-//             DataColumn(
-//               label: Text(
-//                 'عدد الآيات',
-//                 style: TextStyle(fontStyle: FontStyle.italic),
-//               ),
-//             ),
-//           ],
-//           rows: const <DataRow>[
-//             DataRow(
-//               cells: <DataCell>[
-//                 DataCell(Text('البقرة')),
-//                 DataCell(Text('286')),
-//               ],
-//             ),
-//             DataRow(
-//               cells: <DataCell>[
-//                 DataCell(Text('البقرة')),
-//                 DataCell(Text('286')),
-//               ],
-//             ),
-//             DataRow(
-//               cells: <DataCell>[
-//                 DataCell(Text('البقرة')),
-//                 DataCell(Text('286')),
-//               ],
-//             ),
-//             DataRow(
-//               cells: <DataCell>[
-//                 DataCell(Text('البقرة')),
-//                 DataCell(Text('286')),
-//               ],
-//             ),
-//             DataRow(
-//               cells: <DataCell>[
-//                 DataCell(Text('البقرة')),
-//                 DataCell(Text('286')),
-//               ],
-//             ),
-//             DataRow(
-//               cells: <DataCell>[
-//                 DataCell(Text('البقرة')),
-//                 DataCell(Text('286')),
-//               ],
-//             ),
-//             DataRow(
-//               cells: <DataCell>[
-//                 DataCell(Text('البقرة')),
-//                 DataCell(Text('286')),
-//               ],
-//             ),
-//             DataRow(
-//               cells: <DataCell>[
-//                 DataCell(Text('البقرة')),
-//                 DataCell(Text('286')),
-//               ],
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }

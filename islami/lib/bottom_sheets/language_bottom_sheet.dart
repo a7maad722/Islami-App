@@ -1,18 +1,24 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:islami/themes/my_themes.dart';
+import 'package:islami/providers/my_provider.dart';
+// import 'package:islami/themes/my_themes.dart';
+import 'package:provider/provider.dart';
 
 class LanguageBottomSheet extends StatelessWidget {
   const LanguageBottomSheet({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<MyProvider>(context);
     return Container(
       height: MediaQuery.of(context).size.height * 0.5,
       decoration: BoxDecoration(
-          color: Colors.white,
+          color: provider.appTheme == ThemeMode.light
+              ? Color(0xffB7935F)
+              : Color(0xff141A2E),
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30),
-            topRight: Radius.circular(30),
+            topLeft: Radius.circular(25),
+            topRight: Radius.circular(25),
           )),
       child: Column(
         children: [
@@ -25,16 +31,24 @@ class LanguageBottomSheet extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'English',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: MyThemes.AppPrimaryColor,
-                      ),
+                InkWell(
+                  onTap: () {
+                    context.setLocale(Locale('ar'));
+                  },
+                  child: Text(
+                    'arabic'.tr(),
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: Colors.white,
+                        ),
+                  ),
                 ),
-                Icon(
-                  Icons.done_rounded,
-                  size: 30,
-                )
+                context.locale == Locale("ar")
+                    ? Icon(
+                        Icons.done_rounded,
+                        size: 30,
+                        color: Colors.white,
+                      )
+                    : SizedBox(),
               ],
             ),
           ),
@@ -43,16 +57,24 @@ class LanguageBottomSheet extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'Dark',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: MyThemes.AppPrimaryColor,
-                      ),
+                InkWell(
+                  onTap: () {
+                    context.setLocale(Locale('en'));
+                  },
+                  child: Text(
+                    'english'.tr(),
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: Colors.white,
+                        ),
+                  ),
                 ),
-                Icon(
-                  Icons.done_rounded,
-                  size: 30,
-                )
+                context.locale == Locale("en")
+                    ? Icon(
+                        Icons.done_rounded,
+                        size: 30,
+                        color: Colors.white,
+                      )
+                    : SizedBox(),
               ],
             ),
           ),

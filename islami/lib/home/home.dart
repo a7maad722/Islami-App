@@ -1,5 +1,4 @@
-import 'dart:ffi';
-
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:islami/home/tabs/ahadeth.dart';
 import 'package:islami/home/tabs/quran.dart';
@@ -32,8 +31,8 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         Scaffold(
           appBar: AppBar(
-            title: const Text(
-              'Isalmi',
+            title: Text(
+              "appBarTitle".tr(),
             ),
           ),
           bottomNavigationBar: BottomNavigationBar(

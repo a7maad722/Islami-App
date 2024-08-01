@@ -1,7 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami/Screens/ahadeth_details.dart';
 import 'package:islami/models/hadeth_model.dart';
+import 'package:islami/providers/hadeethDetailsProvider.dart';
+import 'package:provider/provider.dart';
 
 class ahadethTab extends StatefulWidget {
   static const String routeName = 'AhadethTap';
@@ -25,41 +28,47 @@ class _ahadethTabState extends State<ahadethTab> {
     // if(allAhadeeth.isEmpty){
     //   loadAhadeeth();
     // }
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Image.asset(
-          'assets/images/hadeth_logo.png',
-          height: 227,
-          // width: 205,
-        ),
-        const Divider(),
-        Text('Hadeeth Name',
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.bodyLarge),
-        const Divider(),
-        Expanded(
-          child: ListView.separated(
-            itemBuilder: (context, index) {
-              return InkWell(
-                onTap: () {
-                  Navigator.pushNamed(context, AhadethDetails.routeName,
-                      arguments: allAhadeeth[index]);
+    return ChangeNotifierProvider(
+      create: (context) => Hadeethdetailsprovider(),
+      builder: (context, child) {
+        var provider = Provider.of<Hadeethdetailsprovider>(context);
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Image.asset(
+              'assets/images/hadeth_logo.png',
+              height: 227,
+              // width: 205,
+            ),
+            const Divider(),
+            Text('HadeethName'.tr(),
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.bodyLarge),
+            const Divider(),
+            Expanded(
+              child: ListView.separated(
+                itemBuilder: (context, index) {
+                  return InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, AhadethDetails.routeName,
+                          arguments: allAhadeeth[index]);
+                    },
+                    child: Text(
+                      allAhadeeth[index].title,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                  );
                 },
-                child: Text(
-                  allAhadeeth[index].title,
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.bodyMedium,
-                ),
-              );
-            },
-            separatorBuilder: (context, index) {
-              return const Divider();
-            },
-            itemCount: allAhadeeth.length,
-          ),
-        )
-      ],
+                separatorBuilder: (context, index) {
+                  return const Divider();
+                },
+                itemCount: allAhadeeth.length,
+              ),
+            )
+          ],
+        );
+      },
     );
   }
 
